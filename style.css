@@ -16,6 +16,24 @@ body {
     overflow-x: hidden;
 }
 
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a9eff;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00d4ff;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -63,6 +81,218 @@ body {
 
 .nav-menu a:hover {
     color: #4a9eff;
+}
+
+/* 移动端菜单按钮 */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #e0e0e0;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* 第4次迭代 - 响应式设计和最终优化 */
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        border-radius: 0 0 15px 15px;
+        padding: 2rem 0;
+        gap: 1.5rem;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu a {
+        padding: 10px 0;
+        font-size: 1.1rem;
+        border-bottom: 1px solid #333;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .tagline {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+        text-align: center;
+    }
+    
+    .hero {
+        min-height: 80vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about, .projects, .skills, .contact {
+        padding: 60px 0;
+    }
+    
+    .project-card, .skill-category, .contact-info {
+        padding: 1.5rem;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 优化导航栏滚动效果 */
+.header.scrolled {
+    background: rgba(10, 10, 10, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* GitHub Pages配置 */
+.github-pages {
+    background: rgba(26, 26, 46, 0.8);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.github-pages h3 {
+    color: #4a9eff;
+    margin-bottom: 1rem;
+}
+
+.github-pages p {
+    color: #b0b0b0;
+    line-height: 1.6;
+}
+
+/* 页面加载动画 */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.page-loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(74, 158, 255, 0.3);
+    border-top: 3px solid #4a9eff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* 第2次迭代 - 完善CSS深色主题样式 */
